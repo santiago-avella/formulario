@@ -1,0 +1,22 @@
+---
+import Estructura from "../Components/Estructura.astro";
+---
+
+<Estructura>
+	<div class="mx-[25%] mt-[25vh] bg-white p-[20px] h-[400px] rounded-md shadow-xl place-content-center">
+		<div id="acept" class="">
+			<img src="/leon.png" class="mx-auto w-[200px]" alt="">
+			<h1 class="text-center">Su formulario fue enviado correctamente</h1>
+		</div>
+		
+	</div>
+</Estructura>
+
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            window.location.href = "/";
+        }, 4000);
+    });
+</script>

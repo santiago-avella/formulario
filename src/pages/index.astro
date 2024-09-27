@@ -8,20 +8,16 @@ import Estructura from "../Components/Estructura.astro";
 			<img src="/leon.png" class="mx-auto w-[200px]" alt="">
 			<h1 class="text-center">Su formulario fue enviado correctamente</h1>
 		</div>
-		<form action="https://formsubmit.co/your@email.com" method="POST" id="formulario" name="contacto" class="" data-netlify="true">
+		<form action="https://formsubmit.co/santyavella21@gmail.com" method="POST" id="formulario" name="contacto" class="">
 			<label class=" font-Figtree mb-[5px]" for="">Nombre</label>
 			<input class="bg-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-600  text-black font-Figtree w-full p-[10px] mb-[10px] rounded-md placeholder:text-white invalid:focus:ring-red-600" type="text" placeholder="Ingrese su nombre" required name="nombre" id="nombre">
 			<p id="errorName" class="text-red-600 hidden">Caracteres invalidos, revise por favor</p>
 			<label class="block font-Figtree mb-[5px]" for="">Correo</label>
 			<input class="bg-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-600  text-black font-Figtree w-full p-[10px] mb-[10px] rounded-md placeholder:text-white invalid:focus:ring-red-600" type="email" placeholder="Ingrese su nombre" name="correo" id="correo">
 			<p id="errorEmail" class="text-red-600 hidden">Caracteres invalidos, revise por favor</p>
-			<label class="block font-Figtree mb-[5px]" for="">Tipo</label>
-			<select class="bg-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-600  text-white font-Figtree w-full p-[10px] mb-[10px] rounded-md" name="tipo[]" id="tipo" required>
-				<option value="" disabled selected>Selecciona una opcion</option>
-				<option value="masculino">Masculino</option>
-				<option value="femenino">Femenino</option>
-			</select>
 			<input type="submit" value="Enviar formulario" class="bg-green-500 p-[10px] my-[10px] rounded-lg">
+			<input type="hidden" name="_captcha" value="true">
+			<input type="hidden" name="_next" value="http://localhost:4321/exito">
 		</form>
 	</div>
 </Estructura>
@@ -41,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const acept= document.querySelector('#acept')
   const formulario = document.querySelector('#formulario')
   formulario.addEventListener('submit', function(evento){
-	evento.preventDefault()
+
 	const { nombre, correo, tipo } = datos
 	if (nombre != '' && correo != '' && tipo != ''){
 		formulario.classList.add('hidden')
