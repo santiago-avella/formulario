@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Cocogoose';
+    src: url('/fonts/Cocogoose-Pro-Regular-trial.ttf') format('truetype'),
+              ;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Cocogoose';
+    src: url('/fonts/Cocogoose-Pro-Bold-Italic-trial.ttf') format('truetype'),
+              ;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Cocogoose';
+    src: url('/fonts/Cocogoose-Pro-Bold-trial.ttf') format('truetype'),
+              ;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Cocogoose';
+    src: url('/fonts/Cocogoose-Pro-Thin-Italic-trial.ttf') format('truetype'),
+              ;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Cocogoose';
+    src: url('/fonts/Cocogoose-Pro-Thin-trial.ttf') format('truetype'),
+              ;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+
+  @font-face {
+    font-family: 'Cocogoose';
+    src: url('/fonts/Cocogoose-Pro-Thin-trial.ttf') format('truetype'),
+              ;
+    font-weight: 300;
+    font-style: normal;
+  }
