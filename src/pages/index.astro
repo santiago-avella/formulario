@@ -17,8 +17,7 @@ import Estructura from "../Components/Estructura.astro";
 				<option value="Masculino">M</option>
 				<option value="Femenino">F</option>
 			</select>
-			<input id="prueba" 
-			 type="submit" value="Enviar formulario" class="bg-green-500 p-[10px] my-[10px] disabled:bg-green-700 rounded-lg">
+			<input type="submit" value="Enviar formulario" class="bg-green-500 p-[10px] my-[10px] disabled:bg-green-700 rounded-lg">
 			<input type="hidden" name="_captcha" value="false">
 			<input type="hidden" name="_subject" value="Formulario IdePro consultores">
 			<input type="hidden" name="_next" value="https://formulario2112.netlify.app/exito/">
@@ -27,8 +26,6 @@ import Estructura from "../Components/Estructura.astro";
 </Estructura>
 
 <script>
-import { transitionEnabledOnThisPage } from "astro:transitions/client"
-
 	
 const datos = {
 	nombre: '',
