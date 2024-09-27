@@ -5,10 +5,6 @@ import Estructura from "../Components/Estructura.astro";
 <Estructura>
 	<label></label>
 	<div class="mx-[25%] mt-[25vh] bg-white p-[20px] h-[400px] rounded-md shadow-xl place-content-center">
-		<div id="acept" class="hidden">
-			<img src="/leon.png" class="mx-auto w-[200px]" alt="">
-			<h1 class="text-center">Su formulario fue enviado correctamente</h1>
-		</div>
 		<form action="https://formsubmit.co/santyavella21@gmail.com" method="POST" id="formulario" name="contacto" class="">
 			<label class=" font-Figtree mb-[5px]" for="">Nombre</label>
 			<input class="bg-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-600  text-black font-Figtree w-full p-[10px] mb-[10px] rounded-md placeholder:text-white invalid:focus:ring-red-600" type="text" placeholder="Ingrese su nombre" required name="nombre" id="nombre">
@@ -21,7 +17,8 @@ import Estructura from "../Components/Estructura.astro";
 				<option value="Masculino">M</option>
 				<option value="Femenino">F</option>
 			</select>
-			<input type="submit" value="Enviar formulario" class="bg-green-500 p-[10px] my-[10px] rounded-lg">
+			<input id="prueba" 
+			 type="submit" value="Enviar formulario" class="bg-green-500 p-[10px] my-[10px] disabled:bg-green-700 rounded-lg">
 			<input type="hidden" name="_captcha" value="false">
 			<input type="hidden" name="_subject" value="Formulario IdePro consultores">
 			<input type="hidden" name="_next" value="https://formulario2112.netlify.app/exito/">
@@ -30,6 +27,8 @@ import Estructura from "../Components/Estructura.astro";
 </Estructura>
 
 <script>
+import { transitionEnabledOnThisPage } from "astro:transitions/client"
+
 	
 const datos = {
 	nombre: '',
@@ -41,27 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const nombre = document.querySelector('#nombre').addEventListener('input', comprobar)
   const correo = document.querySelector('#correo').addEventListener('input', comprobar)
   const tipo = document.querySelector('#tipo').addEventListener('change', comprobar)
-  const acept= document.querySelector('#acept')
-  const formulario = document.querySelector('#formulario')
-  formulario.addEventListener('submit', function(evento){
+  const acept = document.querySelector('#acept')
+  const prueba = document.querySelector('#prueba')
+  
 
-	const { nombre, correo, tipo } = datos
-	if (nombre != '' && correo != '' && tipo != ''){
-		formulario.classList.add('hidden')
-		acept.classList.remove('hidden')
-		formulario[0].value = ''
-    	formulario[1].value = ''
-    	formulario[2].value = ''
-	}
-	else{
-		console.log('Todos los campos son obligatorios')
-	}
-  })
-})
-
-
-
-function comprobar(valor){
+  function comprobar(valor){
 	const errorName = document.querySelector('#errorName')
 	const erroEmail = document.querySelector('#errorEmail')
 	if (valor.target.id == 'nombre'){
@@ -88,4 +71,6 @@ function comprobar(valor){
 	}
 	console.log(datos)
 }
+})
+
 </script>
