@@ -4,23 +4,85 @@ import Estructura from "../Components/Estructura.astro";
 
 <Estructura>
 	<div class="mx-[25%] mt-[25vh] bg-white p-[20px] h-[400px] rounded-md shadow-xl place-content-center">
-		<form target="_blank" action="https://formsubmit.co/santyavella21@gmail.com" method="POST">
-			<div class="form-group">
-			  <div class="form-row">
-				<div class="col">
-				  <input type="text" name="name" class="form-control" placeholder="Full Name" required>
-				</div>
-				<div class="col">
-				  <input type="email" name="email" class="form-control" placeholder="Email Address" required>
-				</div>
-			  </div>
-			</div>
-			<div class="form-group">
-			  <textarea placeholder="Your Message" class="form-control" name="message" rows="10" required></textarea>
-			</div>
-			<button type="submit" class="btn btn-lg btn-dark btn-block">Submit Form</button>
-		  </form>
+		<div id="acept" class="hidden">
+			<img src="/leon.png" class="mx-auto w-[200px]" alt="">
+			<h1 class="text-center">Su formulario fue enviado correctamente</h1>
+		</div>
+		<form action="https://formsubmit.co/your@email.com" method="POST" id="formulario" name="contacto" class="" data-netlify="true">
+			<label class=" font-Figtree mb-[5px]" for="">Nombre</label>
+			<input class="bg-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-600  text-black font-Figtree w-full p-[10px] mb-[10px] rounded-md placeholder:text-white invalid:focus:ring-red-600" type="text" placeholder="Ingrese su nombre" required name="nombre" id="nombre">
+			<p id="errorName" class="text-red-600 hidden">Caracteres invalidos, revise por favor</p>
+			<label class="block font-Figtree mb-[5px]" for="">Correo</label>
+			<input class="bg-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-600  text-black font-Figtree w-full p-[10px] mb-[10px] rounded-md placeholder:text-white invalid:focus:ring-red-600" type="email" placeholder="Ingrese su nombre" name="correo" id="correo">
+			<p id="errorEmail" class="text-red-600 hidden">Caracteres invalidos, revise por favor</p>
+			<label class="block font-Figtree mb-[5px]" for="">Tipo</label>
+			<select class="bg-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-600  text-white font-Figtree w-full p-[10px] mb-[10px] rounded-md" name="tipo[]" id="tipo" required>
+				<option value="" disabled selected>Selecciona una opcion</option>
+				<option value="masculino">Masculino</option>
+				<option value="femenino">Femenino</option>
+			</select>
+			<input type="submit" value="Enviar formulario" class="bg-green-500 p-[10px] my-[10px] rounded-lg">
+		</form>
 	</div>
 </Estructura>
 
+<script>
+	
+const datos = {
+	nombre: '',
+	correo: '',
+	tipo: ''
+}
 
+document.addEventListener('DOMContentLoaded', () => {
+  const nombre = document.querySelector('#nombre').addEventListener('input', comprobar)
+  const correo = document.querySelector('#correo').addEventListener('input', comprobar)
+  const tipo = document.querySelector('#tipo').addEventListener('change', comprobar)
+  const acept= document.querySelector('#acept')
+  const formulario = document.querySelector('#formulario')
+  formulario.addEventListener('submit', function(evento){
+	evento.preventDefault()
+	const { nombre, correo, tipo } = datos
+	if (nombre != '' && correo != '' && tipo != ''){
+		formulario.classList.add('hidden')
+		acept.classList.remove('hidden')
+		formulario[0].value = ''
+    	formulario[1].value = ''
+    	formulario[2].value = ''
+	}
+	else{
+		console.log('Todos los campos son obligatorios')
+	}
+  })
+})
+
+
+
+function comprobar(valor){
+	const errorName = document.querySelector('#errorName')
+	const erroEmail = document.querySelector('#errorEmail')
+	if (valor.target.id == 'nombre'){
+		if (isNaN(valor.target.value) || valor.target.value == ''){
+			errorName.classList.add('hidden')
+			datos[valor.target.id] = valor.target.value
+		}
+		else{
+			errorName.classList.remove('hidden')
+		}
+		
+	}
+	else if (valor.target.id == 'correo'){
+		if (isNaN(valor.target.value) || valor.target.value == ''){
+			erroEmail.classList.add('hidden')
+			datos[valor.target.id] = valor.target.value
+		}
+		else {
+			erroEmail.classList.remove('hidden')
+		}
+	}
+	else{
+		datos[valor.target.id] = valor.target.value
+	}
+	console.log(datos)
+}
+</script>
