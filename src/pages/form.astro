@@ -1,0 +1,65 @@
+---
+import Estructura from "../Components/Estructura.astro";
+---
+
+<Estructura>
+	<label></label>
+	<div class="mx-[25%] mt-[25vh] bg-white p-[20px] h-[400px] rounded-md shadow-xl place-content-center">
+		<form  method="POST" id="formulario" name="contact" class="" data-netlify="true">
+			<label class=" font-Figtree mb-[5px]" for="">Nombre</label>
+			<input class="bg-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-600  text-black font-Figtree w-full p-[10px] mb-[10px] rounded-md placeholder:text-white invalid:focus:ring-red-600" type="text" placeholder="Ingrese su nombre" required name="nombre" id="nombre">
+			<p id="errorName" class="text-red-600 hidden">Caracteres invalidos, revise por favor</p>
+			<label class="block font-Figtree mb-[5px]" for="">Correo</label>
+			<input class="bg-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-600  text-black font-Figtree w-full p-[10px] mb-[10px] rounded-md placeholder:text-white invalid:focus:ring-red-600" type="email" placeholder="Ingrese su nombre" name="correo" id="correo">
+			<p id="errorEmail" class="text-red-600 hidden">Caracteres invalidos, revise por favor</p>
+			<input type="submit" value="Enviar formulario" class="bg-green-500 p-[10px] my-[10px] disabled:bg-green-700 rounded-lg">
+		</form>
+	</div>
+</Estructura>
+
+<script>
+	
+const datos = {
+	nombre: '',
+	correo: '',
+	tipo: ''
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const nombre = document.querySelector('#nombre').addEventListener('input', comprobar)
+  const correo = document.querySelector('#correo').addEventListener('input', comprobar)
+  const tipo = document.querySelector('#tipo').addEventListener('change', comprobar)
+  const acept = document.querySelector('#acept')
+  const prueba = document.querySelector('#prueba')
+  
+
+  function comprobar(valor){
+	const errorName = document.querySelector('#errorName')
+	const erroEmail = document.querySelector('#errorEmail')
+	if (valor.target.id == 'nombre'){
+		if (isNaN(valor.target.value) || valor.target.value == ''){
+			errorName.classList.add('hidden')
+			datos[valor.target.id] = valor.target.value
+		}
+		else{
+			errorName.classList.remove('hidden')
+		}
+		
+	}
+	else if (valor.target.id == 'correo'){
+		if (isNaN(valor.target.value) || valor.target.value == ''){
+			erroEmail.classList.add('hidden')
+			datos[valor.target.id] = valor.target.value
+		}
+		else {
+			erroEmail.classList.remove('hidden')
+		}
+	}
+	else{
+		datos[valor.target.id] = valor.target.value
+	}
+	console.log(datos)
+}
+})
+
+</script>
