@@ -143,9 +143,9 @@ import Estructura from "../Components/Estructura.astro";
 	 asunto.addEventListener('input', (evento) => comprobarString(evento, asuntoError))
      formulario.addEventListener('submit', function(evento){
         evento.preventDefault()
-        window.location.href = '/'
         modal.classList.remove('hidden')
         setTimeout(() => {
+            window.location.href = '/'
             modal.classList.add('hidden')
          
         }, 5000);
