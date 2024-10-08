@@ -3,13 +3,18 @@ import Estructura from "../Components/Estructura.astro";
 ---
 
 <Estructura>
-	<section class="pt-[184px] mx-[100px] pb-[120px] bg-white">
+   <div id="modal" class="fixed inset-0 bg-black/80 z-[1001] hidden">
+        <div class="bg-white max-w-[300px] p-[25px] mx-auto rounded-md mt-[22%]">
+            <h1 class="text-center">Registro enviado correctamente</h1>
+        </div>
+   </div>
+	<section class="pt-[184px] mx-[100px] pb-[120px] ">
         <div id="container" class="max-w-[1240px] mx-auto">
             <div id="flex" class="flex gap-[20px] h-[900px]">
                 <div id="flexchild1" class="w-1/2 bg-Azul rounded-[10px] px-[55px] py-[7%] shadow-xl">
                     <h1 class="font-Cocogoose text-[280%] leading-[0.9] mb-[45px] text-white">Contacta con Nosotros</h1>
                 
-                    <form action="/exito" name="contactanos" method="POST" data-netlify="true">
+                    <form action="/" id="contactanos" name="contactanos" method="POST" data-netlify="true">
                         <div id="flex1_form" class="flex gap-[30px] mb-[25px]">
                             <div id="child1" class="w-1/2 relative">
                                 <label for="nombre" class="block font-Figtree italic font-semibold text-[110] text-Amarillo pb-[6px]">Nombre u Organización</label>
@@ -115,18 +120,39 @@ import Estructura from "../Components/Estructura.astro";
 </Estructura>
 
 <script>
+
+    const datos = {
+        nombre: '',
+        asunto: '',
+        mensaje: ''
+    }
+
 	window.onload = function(){
 	 const boton = document.querySelector('#bEnviar')
+     const modal = document.querySelector('#modal')
 	 const nombreError = document.querySelector('#nombreError')
 	 const nombre = document.querySelector('#nombre')
 	 const asuntoError  = document.querySelector('#asuntoError')
 	 const asunto = document.querySelector('#asunto')
 	 const mensajeError = document.querySelector('#mensajeError')
 	 const mensaje = document.querySelector('#mensaje')
+     const formulario = document.querySelector('#contactanos')
  
 	 mensaje.addEventListener('input', (evento) => comprobarString(evento, mensajeError))
 	 nombre.addEventListener('input', (evento) => comprobarString(evento, nombreError))
 	 asunto.addEventListener('input', (evento) => comprobarString(evento, asuntoError))
+     formulario.addEventListener('submit', function(evento){
+        evento.preventDefault()
+        window.location.href = '/'
+        modal.classList.remove('hidden')
+        setTimeout(() => {
+            modal.classList.add('hidden')
+         
+        }, 5000);
+        
+        
+     })
+
  
 	 function HTMLbutton (valor, idbotton){
 		 if (idbotton instanceof HTMLButtonElement){
@@ -144,6 +170,7 @@ import Estructura from "../Components/Estructura.astro";
 	 {
 		 if (isNaN(evento.target.value)){
 			 HTMLbutton(1, boton)
+             datos[evento.id] = evento.id.value
 			 errorDiv.target.id.classList.add('hidden')
 		 }
 		 else if (evento.target.value == ''){
