@@ -3,71 +3,159 @@ import Estructura from "../Components/Estructura.astro";
 ---
 
 <Estructura>
-	<label></label>
-	<div class="mx-[25%] mt-[25vh] bg-white p-[20px] h-[400px] rounded-md shadow-xl place-content-center">
-		<form action="https://formsubmit.co/santyavella21@gmail.com" method="POST" id="formulario" name="contacto" class="">
-			<label class=" font-Figtree mb-[5px]" for="">Nombre</label>
-			<input class="bg-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-600  text-black font-Figtree w-full p-[10px] mb-[10px] rounded-md placeholder:text-white invalid:focus:ring-red-600" type="text" placeholder="Ingrese su nombre" required name="nombre" id="nombre">
-			<p id="errorName" class="text-red-600 hidden">Caracteres invalidos, revise por favor</p>
-			<label class="block font-Figtree mb-[5px]" for="">Correo</label>
-			<input class="bg-blue-400 focus:outline-none focus:ring-2 focus:ring-purple-600  text-black font-Figtree w-full p-[10px] mb-[10px] rounded-md placeholder:text-white invalid:focus:ring-red-600" type="email" placeholder="Ingrese su nombre" name="correo" id="correo">
-			<p id="errorEmail" class="text-red-600 hidden">Caracteres invalidos, revise por favor</p>
-			<label for="Tipo">Tipo</label>
-			<select name="tipo" id="tipo" class="block w-full"> 
-				<option value="Masculino">M</option>
-				<option value="Femenino">F</option>
-			</select>
-			<input type="submit" value="Enviar formulario" class="bg-green-500 p-[10px] my-[10px] disabled:bg-green-700 rounded-lg">
-			<input type="hidden" name="_captcha" value="false">
-			<input type="hidden" name="_subject" value="Formulario IdePro consultores">
-			<input type="hidden" name="_next" value="https://formulario2112.netlify.app/exito/">
-		</form>
-	</div>
+	<section class="pt-[184px] mx-[100px] pb-[120px] bg-white">
+        <div id="container" class="max-w-[1240px] mx-auto">
+            <div id="flex" class="flex gap-[20px] h-[900px]">
+                <div id="flexchild1" class="w-1/2 bg-Azul rounded-[10px] px-[55px] py-[7%] shadow-xl">
+                    <h1 class="font-Cocogoose text-[280%] leading-[0.9] mb-[45px] text-white">Contacta con Nosotros</h1>
+                
+                    <form action="/" name="contactanos" method="POST" data-netlify="true">
+                        <div id="flex1_form" class="flex gap-[30px] mb-[25px]">
+                            <div id="child1" class="w-1/2 relative">
+                                <label for="nombre" class="block font-Figtree italic font-semibold text-[110] text-Amarillo pb-[6px]">Nombre u Organización</label>
+                                <input type="text" class="bg-[#EAECEE] px-[5px] font-Figtree font-thin text-[94%] text-black rounded-[5px] min-h-[35px] w-full outline-none border-[1px] border-Amarillo focus:ring-2 focus:ring-Amarillo invalid:focus:ring-red-600" name="nombre" id="nombre" required>
+                                <p id="nombreError" class="absolute bottom-[-25px] text-red-600 font-Figtree font-semibold hidden">Caracteres invalidos, revisa</p>
+                            </div>
+                            <div id="child2" class="w-1/2">
+                                <label for="correo" class="block font-Figtree i talic font-semibold text-[110] text-Amarillo pb-[6px]">Correo Electrónico</label>
+                                <input type="email" class="bg-[#EAECEE] px-[5px] font-Figtree font-thin text-[94%] text-black rounded-[5px] min-h-[35px] w-full outline-none border-[1px] border-Amarillo focus:ring-2 focus:ring-Amarillo invalid:focus:ring-red-600" name="correo" id="correo" required>
+                            </div>
+                        </div>
+                        <div id="flex1_form" class="flex gap-[30px] mb-[25px]">
+                            <div id="child1" class="w-1/2">
+                                <label for="telefono" class="block font-Figtree italic font-semibold text-[110] text-Amarillo pb-[6px]">Teléfono o celular</label>
+                                <input type="text" class="bg-[#EAECEE] px-[5px] font-Figtree font-thin text-[94%] text-black rounded-[5px] min-h-[35px] w-full outline-none border-[1px] border-Amarillo focus:ring-2 focus:ring-Amarillo invalid:focus:ring-red-600" name="telefono" id="telefono" required>
+                            </div>
+                            <div id="child2" class="w-1/2">
+                                <label for="correo" class="block font-Figtree i talic font-semibold text-[110] text-Amarillo pb-[6px]">Medio de contacto </label>
+                                <select class="bg-[#EAECEE] px-[5px] font-Figtree font-thin text-[94%] text-black rounded-[5px] min-h-[35px] w-full outline-none border-[1px] border-Amarillo focus:ring-2 focus:ring-Amarillo invalid:focus:ring-red-600" name="medio[]" id="medio">
+                                    <option value="Whatsapp" class="text-sm text-Azul">WhatsApp</option>
+                                    <option value="Correo" class="text-sm text-Azul">Correo Electrónico</option>
+                                </select>
+                            </div>
+                        </div>
+                       
+                        <label for="asunto" class="block font-Figtree italic font-semibold text-[110] text-Amarillo pb-[6px]">Asunto</label>
+                        <textarea class="bg-[#EAECEE] px-[6px] pt-[6px] font-Figtree font-thin text-[94%] leading-[1.2] min-h-[50px] max-h-[50px] text-black rounded-[5px] w-full outline-none border-[1px] border-Amarillo focus:ring-2 focus:ring-Amarillo invalid:focus:ring-red-600 mb-[25px] relative" name="asunto" id="asunto" rows="2" required></textarea>
+                        <p id="asuntoError" class="absolute bottom-[-6px] text-red-600 font-Figtree font-semibold mb-[10px] hidden">Caracteres invalidos, revisa</p>
+
+                        <div class="relative">
+                            <label for="mensaje" class="block font-Figtree italic font-semibold text-[110] text-Amarillo pb-[6px]">Mensaje</label>
+                            <textarea class="bg-[#EAECEE] pl-[6px] pr-[15px] pt-[6px] font-Figtree font-thin text-[94%] text-justify leading-[1.2] min-h-[140px] max-h-[140px] text-black rounded-[5px] w-full outline-none border-[1px] border-Amarillo focus:ring-2 focus:ring-Amarillo invalid:focus:ring-red-600 mb-[30px]" name="mensaje" id="mensaje" rows="15" required></textarea>
+                            <p id="mensajeError" class="absolute bottom-[-6px] text-red-600 font-Figtree font-semibold mb-[10px] hidden">Caracteres invalidos, revisa</p>
+                        </div>
+                            
+                        <label class="flex items-center space-x-2 mb-[30px]">
+                            <input type="checkbox" class="h-5 w-5 text-Amarillo rounded-2xl" required>
+                            <span class="text-white hover:underline font-Figtree italic font-extralight text-[80%]"><a href="/">He leído y acepto las políticas de tratamiento de datos</a></span>
+                        </label>
+
+                        <button type="submit" class="py-[16px] px-[15%] bg-Amarillo font-Figtree font-bold text-white text-[105%] rounded-[8px] disabled:bg-Amarillo/90" id="bEnviar">Enviar</button>
+                    </form>
+                </div>
+                
+                <div id="flexchild2" class="flex flex-col gap-[20px] w-1/2">
+
+                    <div class="bg-[url('/images/Contactanos_image.jpg')] bg-cover w-full h-1/2  rounded-[10px] shadow-md"> 
+                       
+                    </div>
+                    <div class="bg-Azul w-full h-1/2 pt-[10%] rounded-[10px] shadow-md">
+                       <h2 class="font-Figtree font-semibold italic max-w-[400px] mx-auto text-white text-[180%] leading-[1] mb-[40px] ">Conéctate a la red IdeaPro,
+                        #ValoraLoPublico</h2>
+                       <a href="https://tailwindcss.com/docs/font-style" target="_blank" class="group">
+                        <div id="flex2" class="flex items-center gap-[20px] rounded-[10px] mx-auto max-w-[400px] mb-[25px] pl-[6px] py-[4px] group-hover:bg-Amarillo transition-colors duration-500">
+                            <div id="flexChild1">
+                               <img src="/images/Whatsapp.png" alt="" class="w-[50px]">
+                            </div>
+                            <div id="flexChild2">
+                               <p class="font-Figtree leading-[1.2] text-white text-[110%]">
+                                   <span class="block font-bold">Whatsapp</span>
+                                   <span class="font-extralight">301563984</span>
+                               </p>
+                               
+                            </div>
+   
+                           </div>
+                       </a>
+                       <a href="https://tailwindcss.com/docs/font-style" target="_blank" class="group">
+                        <div id="flex2" class="flex  items-center gap-[20px]  rounded-[10px] mx-auto max-w-[400px] mb-[25px] pl-[6px] py-[4px] group-hover:bg-Amarillo transition-colors duration-500">
+                            <div id="flexChild1">
+                               <img src="/images/Correo.png" alt="" class="w-[50px]">
+                            </div>
+                            <div id="flexChild2">
+                               <p class="font-Figtree leading-[1.2] text-white text-[110%]">
+                                   <span class="block font-bold">Correo Electrónico</span>
+                                   <span class="font-extralight">ideaproconsultores.gmail.com</span>
+                               </p>
+                               
+                            </div>
+   
+                           </div>
+                       </a>
+                       <a href="https://tailwindcss.com/docs/font-style" target="_blank" class="group">
+                        <div id="flex2" class="flex  items-center gap-[20px]  rounded-[10px] mx-auto max-w-[400px] pl-[6px] py-[4px] group-hover:bg-Amarillo transition-colors duration-500">
+                            <div id="flexChild1">
+                               <img src="/images/Linkedin.png" alt="" class="w-[50px]">
+                            </div>
+                            <div id="flexChild2">
+                               <p class="font-Figtree leading-[1.2] text-white text-[110%]">
+                                   <span class="block font-bold">LinkedIn</span>
+                                   <span class="font-extralight">IDEAPRO Consultores</span>
+                               </p>
+                               
+                            </div>
+   
+                           </div>
+                       </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </Estructura>
 
 <script>
-	
-const datos = {
-	nombre: '',
-	correo: '',
-	tipo: ''
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const nombre = document.querySelector('#nombre').addEventListener('input', comprobar)
-  const correo = document.querySelector('#correo').addEventListener('input', comprobar)
-  const tipo = document.querySelector('#tipo').addEventListener('change', comprobar)
-  const acept = document.querySelector('#acept')
-  const prueba = document.querySelector('#prueba')
-  
-
-  function comprobar(valor){
-	const errorName = document.querySelector('#errorName')
-	const erroEmail = document.querySelector('#errorEmail')
-	if (valor.target.id == 'nombre'){
-		if (isNaN(valor.target.value) || valor.target.value == ''){
-			errorName.classList.add('hidden')
-			datos[valor.target.id] = valor.target.value
-		}
-		else{
-			errorName.classList.remove('hidden')
-		}
-		
-	}
-	else if (valor.target.id == 'correo'){
-		if (isNaN(valor.target.value) || valor.target.value == ''){
-			erroEmail.classList.add('hidden')
-			datos[valor.target.id] = valor.target.value
-		}
-		else {
-			erroEmail.classList.remove('hidden')
-		}
-	}
-	else{
-		datos[valor.target.id] = valor.target.value
-	}
-	console.log(datos)
-}
-})
-
-</script>
+	window.onload = function(){
+	 const boton = document.querySelector('#bEnviar')
+	 const nombreError = document.querySelector('#nombreError')
+	 const nombre = document.querySelector('#nombre')
+	 const asuntoError  = document.querySelector('#asuntoError')
+	 const asunto = document.querySelector('#asunto')
+	 const mensajeError = document.querySelector('#mensajeError')
+	 const mensaje = document.querySelector('#mensaje')
+ 
+	 mensaje.addEventListener('input', (evento) => comprobarString(evento, mensajeError))
+	 nombre.addEventListener('input', (evento) => comprobarString(evento, nombreError))
+	 asunto.addEventListener('input', (evento) => comprobarString(evento, asuntoError))
+ 
+	 function HTMLbutton (valor, idbotton){
+		 if (idbotton instanceof HTMLButtonElement){
+			 if (valor == 1){
+				idbotton.disabled = false
+			 }
+			 else {
+				 console.log('desactivado')
+				 idbotton.disabled = true
+			 }
+		 }
+	 }
+ 
+	 function comprobarString(evento, errorDiv)
+	 {
+		 if (isNaN(evento.target.value)){
+			 HTMLbutton(1, boton)
+			 errorDiv.target.id.classList.add('hidden')
+		 }
+		 else if (evento.target.value == ''){
+			 HTMLbutton(1, boton)
+			 errorDiv.classList.add('hidden')
+		 }
+		 else{
+			 HTMLbutton(0, boton)
+			 errorDiv.classList.remove('hidden')
+			 
+		 }
+	 }
+	} 
+	 
+ </script>
