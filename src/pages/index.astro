@@ -142,15 +142,28 @@ import Estructura from "../Components/Estructura.astro";
 	 nombre.addEventListener('input', (evento) => comprobarString(evento, nombreError))
 	 asunto.addEventListener('input', (evento) => comprobarString(evento, asuntoError))
      formulario.addEventListener('submit', function(evento){
-        
-        
-        modal.classList.remove('hidden')
-        setTimeout(() => {
-            modal.classList.add('hidden')
-         
-        }, 20000);
-        
-        
+        evento.preventDefault(); // Evita el envío del formulario por defecto para usar fetch
+        if (formulario instanceof HTMLFormElement){
+            const formData = new FormData(formulario)
+
+            // Enviar los datos usando fetch
+            fetch(formulario.action, {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    modal.classList.remove('hidden')
+                    setTimeout(() => {
+                        modal.classList.add('hidden')
+                        window.location.href = '/'
+                    }, 3000)
+                } else {
+                    console.error('Error al enviar el formulario');
+                }
+            }).catch(error => {
+                console.error('Hubo un problema con el envío:', error);
+            })
+        }
      })
 
  
