@@ -9,7 +9,7 @@
         <div id="flex" class="flex flex-col gap-[25px] lg:flex lg:flex-row lg:gap-[25px] lg:h-[900px]">
             <div id="flexchild1" class="lg:w-1/2 order-2 bg-Azul rounded-[10px] px-[7%] py-[50px] lg:order-1 lg:px-[55px] lg:py-[7%] shadow-xl">
                 <h1 class="font-Cocogoose text-[280%] leading-[0.9] mb-[45px] text-white">Contacta con Nosotros</h1>
-                <form action="/contactanos" id="contactanos" name="contactanos" method="POST" data-netlify="true">
+                <form action="/" id="contactanos" name="contactanos" method="POST" data-netlify="true">
                     <div id="flex1_form" class="flex gap-[30px] mb-[25px]">
                         <div id="child1" class="w-1/2 relative">
                             <label for="nombre" class="block font-Figtree italic font-semibold text-[90%] max-w-[150px] leading-[1] lg:leading-none md:max-w-[200px] lg:max-w-[150px] lg:text-[110%] lg:pb-[10px] text-Amarillo pb-[10px]">Nombre u Organización</label>
@@ -112,3 +112,75 @@
         </div>
     </div>
 </section>
+
+<script>
+    window.onload = function(){
+     const formulario = document.querySelector('#contactanos')
+     const modal = document.querySelector('#modal')
+     const boton = document.querySelector('#bEnviar')
+     const nombreError = document.querySelector('#nombreError')
+     const nombre = document.querySelector('#nombre')
+     const asuntoError  = document.querySelector('#asuntoError')
+     const asunto = document.querySelector('#asunto')
+     const mensajeError = document.querySelector('#mensajeError')
+     const mensaje = document.querySelector('#mensaje')
+ 
+     mensaje.addEventListener('input', (evento) => comprobarString(evento, mensajeError))
+     nombre.addEventListener('input', (evento) => comprobarString(evento, nombreError))
+     asunto.addEventListener('input', (evento) => comprobarString(evento, asuntoError))
+     formulario.addEventListener('submit', enviarFormulario)
+ 
+     
+     async function enviarFormulario (evento) {
+         evento.preventDefault()
+         if (formulario instanceof HTMLFormElement)
+             try {
+                 const dataForm = new FormData(formulario)
+                 const response = await fetch(formulario.action, {
+                     method: 'POST',
+                     body: dataForm
+                 })
+                 if (response.ok){
+                     modal.classList.remove('hidden')
+                     setTimeout(() => {
+                         modal.classList.add('hidden')
+                         window.location.href = '/'
+                     }, 3000)
+                 }
+             } catch (error) {
+                 console.log(error)
+             }       
+     }
+ 
+ 
+     function HTMLbutton (valor, idbotton){
+         if (idbotton instanceof HTMLButtonElement){
+             if (valor == 1){
+                idbotton.disabled = false
+             }
+             else {
+                 console.log('desactivado')
+                 idbotton.disabled = true
+             }
+         }
+     }
+ 
+     function comprobarString(evento, errorDiv)
+     {
+         if (isNaN(evento.target.value)){
+             HTMLbutton(1, boton)
+             errorDiv.target.id.classList.add('hidden')
+         }
+         else if (evento.target.value == ''){
+             HTMLbutton(1, boton)
+             errorDiv.classList.add('hidden')
+         }
+         else{
+             HTMLbutton(0, boton)
+             errorDiv.classList.remove('hidden')
+             
+         }
+     }
+    } 
+     
+ </script>
