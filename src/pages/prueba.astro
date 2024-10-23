@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-Frame Grab Example</title>
+    <!-- Incluir la librería aframe -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- Incluir la librería aframe-extras -->
+    <script src="https://unpkg.com/aframe-extras@6.1.0/dist/aframe-extras.min.js"></script>
+    <!-- Incluir la librería de físicas -->
+    <script src="https://cdn.rawgit.com/n5ro/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene physics="gravity: -9.8">
+      <!-- Cargar assets (texturas, imágenes, videos si es necesario) -->
+      <a-assets></a-assets>
+
+      <!-- Crear un suelo estático donde los objetos caerán -->
+      <a-plane position="0 0 0" rotation="-90 0 0" width="10" height="10" color="#7BC8A4" static-body></a-plane>
+
+      <!-- Crear un cubo que se puede agarrar y mover -->
+      <a-box color="#4CC3D9" position="0 1 -3" width="1" height="1" depth="1" 
+             dynamic-body grabbable></a-box>
+
+      <!-- Crear una cámara con un cursor para poder interactuar con los objetos -->
+      <a-camera position="0 1.6 0">
+        <a-cursor></a-cursor>
+      </a-camera>
+
+    </a-scene>
+  </body>
+</html>
